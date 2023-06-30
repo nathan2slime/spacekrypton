@@ -1,0 +1,18 @@
+{
+  "name": "@kry/i18n",
+  "description": "Kry I18n",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "@kry/tsconfig": "*",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
+  },
+  "packageManager": "yarn@3.5.0"
+}

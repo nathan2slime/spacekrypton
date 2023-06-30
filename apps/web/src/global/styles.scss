@@ -1,0 +1,10 @@
+@import url('~@kry/core/dist/index.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-user-drag: none;
+  user-select: none;
+}

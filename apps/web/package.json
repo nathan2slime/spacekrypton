@@ -1,0 +1,45 @@
+{
+  "name": "@kry/web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@kry/core": "*",
+    "@kry/i18n": "*",
+    "@kry/satellites": "*",
+    "@kry/tsconfig": "*",
+    "@kry/types": "*",
+    "autoprefixer": "10.4.14",
+    "next": "13.4.4",
+    "postcss": "8.4.23",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.0.4",
+    "valtio": "^1.10.5"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.7.14",
+    "@graphql-codegen/typescript-type-graphql": "^2.3.6",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@hookform/resolvers": "^3.1.0",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "20.2.3",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "classnames": "^2.3.2",
+    "graphql": "^16.6.0",
+    "next-auth": "^4.22.1",
+    "react-hook-form": "^7.44.3",
+    "react-hot-toast": "^2.4.1",
+    "sass": "^1.62.1",
+    "tailwind-variants": "^0.1.5",
+    "yup": "^1.2.0"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "spacekrypton",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "dotenv -- turbo run dev --parallel",
+    "lint": "dotenv -- turbo run lint",
+    "build": "dotenv -- turbo run build",
+    "test": "dotenv -- turbo run test",
+    "seed": "dotenv -- turbo run seed",
+    "e2e": "dotenv -- turbo run e2e",
+    "start": "dotenv -- turbo run start",
+    "format": "prettier --write .",
+    "generate": "graphql-codegen",
+    "commit": "git-cz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/client-preset": "^3.0.1",
+    "@graphql-codegen/typed-document-node": "^5.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@graphql-codegen/typescript-resolvers": "^3.2.1",
+    "@storybook/react-webpack5": "^7.0.10",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "dotenv-cli": "^7.1.0",
+    "husky": "^8.0.3",
+    "prettier": "latest",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.7.0",
+    "turbo": "latest",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "packageManager": "yarn@3.5.0",
+  "dependencies": {
+    "jest": "^29.5.0",
+    "react-spinners": "^0.13.8"
+  },
+  "resolutions": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "installConfig": {
+    "hoistingLimits": "none"
+  }
+}

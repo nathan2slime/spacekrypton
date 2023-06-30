@@ -1,0 +1,4 @@
+{
+  "extends": "@kry/tsconfig/api.json",
+  "compilerOptions": { "outDir": "./dist", "baseUrl": "./" }
+}
