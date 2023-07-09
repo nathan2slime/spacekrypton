@@ -1,0 +1,28 @@
+{
+  "name": "@kry/even",
+  "description": "Kry Even",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsup",
+    "start": "node dist/index.js",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "@kry/tsconfig": "*",
+    "axios": "^1.4.0",
+    "canvas": "^2.11.2",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
+  },
+  "packageManager": "yarn@3.5.0",
+  "dependencies": {
+    "@types/node": "^20.4.0"
+  }
+}
