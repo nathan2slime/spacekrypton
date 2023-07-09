@@ -12,6 +12,10 @@ import { format } from 'date-fns';
 export const guildMemberAdd = async (member: GuildMember) => {
   const guild = member.guild;
   const channel = guild.systemChannel;
+  
+  try {
+    await member.roles.add(process.env.EVEN_MEMBER_ROLE as string);
+  } catch (error) {}
 
   if (channel) {
     const embed = new EmbedBuilder({
