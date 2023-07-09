@@ -40,16 +40,23 @@ export class Apod {
     );
 
     if (data) {
+      const isImage = data.media_type == 'image';
       const embed = new EmbedBuilder({
         title: data.title,
         description: `${data.explanation}\n\nDate: ${format(
           new Date(data.date),
           'dd/MM/yyyy'
         )}`,
-        image: {
-          url: data.url,
-        },
       });
+
+      data.media_type == 'image'
+        ? embed.setImage(data.url)
+        : embed.setFields([
+            {
+              name: 'Media',
+              value: data.url,
+            },
+          ]);
 
       slash
         ? slash.reply({
