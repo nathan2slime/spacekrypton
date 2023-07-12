@@ -23,5 +23,6 @@ jobs:
           script: |
             cd /root/spacekrypton
             git pull
+            nvm use 18
             yarn install
             service even restart

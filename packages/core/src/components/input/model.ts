@@ -8,5 +8,5 @@ export type KryInputProps = HTMLMotionProps<'input'> &
     invalid?: boolean;
     message?: string;
     label?: string;
-    onChange?: (value: string) => void;
+    kryChange?: (value: string) => void;
   };
