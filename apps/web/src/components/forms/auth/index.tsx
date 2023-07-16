@@ -19,6 +19,7 @@ import { appProxyState } from '@/store/app.state';
 import { getFieldError } from '@/utils/form';
 
 import spacekrypton from '@/assets/svgs/spacekrypton.svg';
+
 export type AuthFormType = {
   username: string;
   password: string;

@@ -33,7 +33,15 @@ export type AppI18nWeb = {
   invalidEmail: string;
 };
 
+export type AppEmailI18n = {
+  active: {
+    subject: string;
+    texts: string[];
+  };
+};
+
 export type AppI18nData = {
   web: AppI18nWeb;
   err: AppI18nErr;
+  email: AppEmailI18n;
 };

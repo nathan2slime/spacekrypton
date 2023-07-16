@@ -10,7 +10,7 @@ export const styles = tv({
   slots: {
     logo: 'max-w-[90px] w-full cursor-pointer',
     footerAction: 'mb-2 mt-2 text-sm text-primary-100',
-    footer: 'flex flex-col justify-center items-center',
+    footer: 'flex text-sm flex-col justify-center items-center',
     header: 'flex justify-center items-center gap-3',
     title: 'text-primary-500 text-2xl capitalize font-bold',
     wrapper:
@@ -18,6 +18,6 @@ export const styles = tv({
     button: 'mt-4',
     fields: 'flex flex-col gap-3',
     link: 'font-bold text-primary-100 hover:text-secondary-100 transition duration-200 cursor-pointer',
-    divider: 'h-[1px] w-full my-6 bg-dark-500',
+    divider: 'h-[1px] w-full my-6 bg-dark-800',
   },
 });

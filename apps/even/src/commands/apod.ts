@@ -18,7 +18,7 @@ import { getTodayApod } from '../services/apod';
 
 @Discord()
 export class Apod {
-  async command(
+  async run(
     value: string,
     simple?: SimpleCommandMessage,
     slash?: CommandInteraction
@@ -49,7 +49,7 @@ export class Apod {
         )}`,
       });
 
-      data.media_type == 'image'
+      isImage
         ? embed.setImage(data.url)
         : embed.setFields([
             {
@@ -82,7 +82,7 @@ export class Apod {
     value: string,
     interaction: CommandInteraction
   ) {
-    await this.command(value, undefined, interaction);
+    await this.run(value, undefined, interaction);
   }
 
   @SimpleCommand({ description: 'Returns astronomy picture day', name: 'apod' })
@@ -91,6 +91,6 @@ export class Apod {
     value: string,
     interaction: SimpleCommandMessage
   ) {
-    await this.command(value, interaction);
+    await this.run(value, interaction);
   }
 }

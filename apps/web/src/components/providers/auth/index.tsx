@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useSnapshot } from 'valtio';
 import { User } from '@kry/types';
-import {} from 'react-spinners';
+import { useRouter } from 'next/navigation';
 
 import { Loading } from '@/components/loading';
 
@@ -16,6 +16,8 @@ import { getSavedUser, saveUser } from '@/utils/auth';
 import { AppChildren } from '@/types';
 
 const AuthProvider = ({ children }: AppChildren) => {
+  const router = useRouter();
+
   const { lang } = useSnapshot(appProxyState);
   const { loading, ...auth } = useSnapshot(authProxyState);
   const { data: session, status } = useSession();
@@ -38,6 +40,12 @@ const AuthProvider = ({ children }: AppChildren) => {
       authProxyState.loading = status == 'loading';
     }
   }, [session]);
+
+  useEffect(() => {
+    const { user } = auth;
+
+    if (user && !user.confirmed) router.push('/auth/active');
+  }, [auth]);
 
   const onAuth = async (token: string) => {
     const authServices = new AuthServices({
