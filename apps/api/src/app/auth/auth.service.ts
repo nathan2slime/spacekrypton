@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AppI18nLang, i18n } from '@kry/i18n';
@@ -69,6 +69,7 @@ export default class AuthService {
 
   async sendAccountConfirmationEmail(id: number, lang: AppI18nLang) {
     const user = await this.userService.getById(id);
+    if (!user) throw new Error(i18n[lang].err.userNotFound);
 
     if (!user.confirmed) {
       const userSecret = await this.userSecretService.create(user);

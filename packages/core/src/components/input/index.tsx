@@ -6,7 +6,7 @@ import { styles } from './styles';
 export const KryInput = ({
   className,
   children,
-  onChange,
+  kryChange: onChange,
   label,
   message,
   invalid,

@@ -15,11 +15,8 @@ export const options: NextAuthOptions = {
     verifyRequest: '/',
     newUser: '/',
   },
+  debug: true,
   providers: [
-    CredentialsProvider({
-      authorize: () => null,
-      credentials: {},
-    }),
     DiscordProvider({
       clientId: process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID as string,
       authorization: process.env.NEXT_PUBLIC_DISCORD_AUTHORIZATION as string,

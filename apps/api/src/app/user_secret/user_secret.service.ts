@@ -5,8 +5,8 @@ import { Repository } from 'typeorm';
 import { AppI18nLang, i18n } from '@kry/i18n';
 
 import { UserSecret } from '../models/user_secret.model';
-import { User } from '../models/user.model';
 import { ValidateUserSecret } from './user_secret.types';
+import { User } from '../models/user.model';
 
 @Injectable()
 export default class UserSecretService {

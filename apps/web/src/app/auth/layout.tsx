@@ -16,17 +16,19 @@ const AuthLayout = ({ children }: AppChildren) => {
   const { user } = useSnapshot(authProxyState);
 
   useEffect(() => {
-    if (user) router.push('/app/space');
+    if (user) {
+      if (!user.confirmed) return router.push('/auth/active');
+
+      router.push('/app/space');
+    }
   }, [user]);
 
   return (
-    !user && (
-      <div className={style.base()}>
-        {children}
+    <div className={style.base()}>
+      {children}
 
-        <div />
-      </div>
-    )
+      <div />
+    </div>
   );
 };
 

@@ -20,6 +20,12 @@ import { getFieldError } from '@/utils/form';
 
 import spacekrypton from '@/assets/svgs/spacekrypton.svg';
 
+export type AuthFormType = {
+  username: string;
+  password: string;
+  email: string;
+};
+
 export const AuthForm = ({
   type = 'signin',
   isLoading,
@@ -57,14 +63,14 @@ export const AuthForm = ({
     mode: 'all',
   });
 
-  const form = watch();
+  const form = watch() as AuthFormType;
 
   const name = i18n[lang].web[type == 'signin' ? 'signIn' : 'signUp'];
 
   return (
     <div className={style.wrapper()}>
       <div className={style.header()}>
-        <Link href="/app">
+        <Link href="/app/space">
           <Image
             className={style.logo()}
             src={spacekrypton}
@@ -81,7 +87,7 @@ export const AuthForm = ({
         {type == 'signup' && (
           <KryInput
             value={form.username}
-            onChange={e => setValue('username', e, { shouldValidate: true })}
+            kryChange={e => setValue('username', e, { shouldValidate: true })}
             label={i18n[lang].web.username}
             message={getFieldError(errors, 'username').message}
             invalid={getFieldError(errors, 'username').error}
@@ -91,7 +97,7 @@ export const AuthForm = ({
 
         <KryInput
           value={form.email}
-          onChange={e => setValue('email', e, { shouldValidate: true })}
+          kryChange={e => setValue('email', e, { shouldValidate: true })}
           message={getFieldError(errors, 'email').message}
           invalid={getFieldError(errors, 'email').error}
           label={i18n[lang].web.email}
@@ -100,7 +106,7 @@ export const AuthForm = ({
 
         <KryInput
           value={form.password}
-          onChange={e => setValue('password', e, { shouldValidate: true })}
+          kryChange={e => setValue('password', e, { shouldValidate: true })}
           message={getFieldError(errors, 'password').message}
           invalid={getFieldError(errors, 'password').error}
           label={i18n[lang].web.password}

@@ -1,8 +1,10 @@
 import { Transporter, createTransport } from 'nodemailer';
 import { Injectable } from '@nestjs/common';
-import { AppI18nLang } from '@kry/i18n';
+import { AppI18nLang, i18n } from '@kry/i18n';
 
 import { UserSecret } from '../models/user_secret.model';
+
+import templates from './templates';
 
 @Injectable()
 export default class EmailService {
@@ -22,14 +24,23 @@ export default class EmailService {
 
   async sendAccountConfirmationEmail(
     email: string,
-    userSecret: UserSecret,
-    _lang: AppI18nLang
+    { secret, user: { username } }: UserSecret,
+    lang: AppI18nLang
   ) {
+    const { base, active } = templates;
+    const { texts, subject } = i18n[lang].email.active;
+    const { sendMail } = this.transporter;
+
     this.transporter.sendMail({
-      from: '',
       to: email,
-      subject: 'Código de confirmação: ' + userSecret.user.username,
-      html: `Olá ${userSecret.user.username} seu código aqui: ${userSecret.secret}`,
+      subject,
+      html: base(
+        active({
+          secret,
+          texts,
+          username,
+        })
+      ),
     });
   }
 }
