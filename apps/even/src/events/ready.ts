@@ -1,5 +1,6 @@
 import EventEmitter from 'events';
 import { logger } from '@kry/logger';
+import axios from 'axios';
 import { Interaction, Colors, EmbedBuilder, Guild } from 'discord.js';
 import { Client } from 'discordx';
 import { envs } from '@kry/envs';
@@ -11,7 +12,6 @@ export type Color = {
 };
 
 const trigger = async (
-  data: Guild,
   level: string,
   message: string,
   payload: object = {}
@@ -25,25 +25,19 @@ const trigger = async (
     success: Colors.Green,
   };
 
-  const channels = await data.channels.fetch();
-  const channel = channels.find(
-    channel => channel && channel.id == envs.EVEN_LOGGER_CHANNEL
-  ) as Interaction['channel'];
+  const embed = new EmbedBuilder({
+    title: 'Even',
+    description:
+      `${message}` + '\n\n``' + JSON.stringify({ level, ...payload }) + '``',
+    color: color[level],
+  }).toJSON();
 
-  if (channel) {
-    await channel.send({
-      embeds: [
-        new EmbedBuilder({
-          title: 'Even',
-          description:
-            `${message}` +
-            '\n\n``' +
-            JSON.stringify({ level, ...payload }) +
-            '``',
-          color: color[level],
-        }),
-      ],
+  try {
+    await axios.post(envs.EVEN_WEBHOOK_LOGGER, {
+      embeds: [embed],
     });
+  } catch (error) {
+    logger.error('send logger', (error as Error).message);
   }
 };
 
@@ -52,9 +46,9 @@ export const ready = async (client: Client, event: EventEmitter) => {
   const guild = guilds.find(guild => guild.id == envs.EVEN_GUILD_ID);
   const data = guild && (await guild.fetch());
 
-  if (data && data.rulesChannel)
+  if (data)
     event.on('even', (level: string, message: string, payload: object = {}) =>
-      trigger(data, level, message, payload)
+      trigger(level, message, payload)
     );
 
   await client.initApplicationCommands({
@@ -63,7 +57,7 @@ export const ready = async (client: Client, event: EventEmitter) => {
 
   const user = client.user;
 
-  if (user) event.emit('even', 'success', 'ready: ' + user.username);
+  if (user) event.emit('even', 'success', 'ready');
 
   github(event);
 };

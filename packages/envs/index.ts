@@ -26,5 +26,5 @@ export const envs = {
   NASA_API_URL: process.env.NEXT_PUBLIC_NASA_API_URL as string,
   EVEN_GUILD_ID: process.env.EVEN_GUILD_ID as string,
   WEBHOOK_GITHUB_PORT: process.env.WEBHOOK_GITHUB_PORT as string,
-  EVEN_LOGGER_CHANNEL: process.env.EVEN_LOGGER_CHANNEL as string,
+  EVEN_WEBHOOK_LOGGER: process.env.EVEN_WEBHOOK_LOGGER as string,
 };
