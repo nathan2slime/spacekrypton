@@ -1,17 +1,20 @@
 import { IntentsBitField } from 'discord.js';
+import { EventEmitter } from 'events';
 import { config } from 'dotenv';
 import { Client } from 'discordx';
+import { envs } from '@kry/envs';
 
 import { guildMemberAdd } from './events';
+import { ready } from './events/ready';
 
 import './commands';
 
 config();
 
-const EVEN_GUILD_ID = process.env.EVEN_GUILD_ID as string;
+export const event = new EventEmitter();
 
 const client = new Client({
-  botGuilds: process.env.NODE_ENV == 'development' ? [EVEN_GUILD_ID] : [],
+  botGuilds: process.env.NODE_ENV == 'development' ? [envs.EVEN_GUILD_ID] : [],
   simpleCommand: {
     prefix: '!',
   },
@@ -25,15 +28,7 @@ const client = new Client({
   ],
 });
 
-client.on('ready', async () => {
-  await client.initApplicationCommands({
-    guild: { disable: { add: true, delete: true, update: true } },
-  });
-
-  const user = client.user;
-
-  if (user) console.info('Ready: ', user.username);
-});
+client.on('ready', async () => await ready(client, event));
 
 client.on('messageCreate', message => {
   client.executeCommand(message);
@@ -44,5 +39,4 @@ client.on('interactionCreate', interaction => {
 });
 
 client.on('guildMemberAdd', guildMemberAdd);
-
 client.login(process.env.EVEN_TOKEN as string);

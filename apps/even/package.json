@@ -2,8 +2,9 @@
   "name": "@kry/even",
   "description": "Kry Even",
   "version": "0.0.1",
+  "main": "./dist/index.js",
   "type": "module",
-  "main": "dist/index.js",
+  "module": "./dist/index.cjs",
   "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
@@ -12,8 +13,9 @@
     "dev": "tsup --watch"
   },
   "devDependencies": {
-    "@kry/tsconfig": "*",
     "@kry/envs": "*",
+    "@kry/logger": "*",
+    "@kry/tsconfig": "*",
     "axios": "^1.4.0",
     "canvas": "^2.11.2",
     "discord.js": "^14.11.0",
@@ -24,6 +26,9 @@
   },
   "packageManager": "yarn@3.5.0",
   "dependencies": {
-    "@types/node": "^20.4.0"
+    "@types/cors": "^2.8.13",
+    "@types/node": "^20.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   }
 }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { envs } from '@kry/envs';
 
 import { HoverImagePayload, MarsPhotos } from './types';
+import { event } from '../../index';
 
 export const getHoverMars = async (
   payload: HoverImagePayload
@@ -18,10 +19,22 @@ export const getHoverMars = async (
         }&page=${page || 1}`
     );
 
-    if (status == 200) return data;
+    if (status == 200) {
+      event.emit('even', 'success', 'Success', {
+        service: 'mars',
+        payload,
+      });
+
+      return data;
+    }
 
     throw new Error();
-  } catch (error) {
+  } catch (err) {
+    event.emit('even', 'error', (err as Error).message, {
+      service: 'mars',
+      payload,
+    });
+
     return { photos: [] };
   }
 };
