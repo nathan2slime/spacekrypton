@@ -33,10 +33,10 @@ const compose_material = async (vert: any, frag: any, uniforms: any) => {
   });
 
   const vertex_shader_promises = loadFile(
-    `assets/shaders/${vert}.glsl`
+    `/assets/shaders/${vert}.glsl`
   ) as Promise<string>;
   const fragment_shader_promises = loadFile(
-    `assets/shaders/${frag}.glsl`
+    `/assets/shaders/${frag}.glsl`
   ) as Promise<string>;
 
   return Promise.all([vertex_shader_promises, fragment_shader_promises]).then(

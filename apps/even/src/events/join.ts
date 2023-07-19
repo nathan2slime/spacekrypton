@@ -12,7 +12,7 @@ import { format } from 'date-fns';
 export const guildMemberAdd = async (member: GuildMember) => {
   const guild = member.guild;
   const channel = guild.systemChannel;
-  
+
   try {
     await member.roles.add(process.env.EVEN_MEMBER_ROLE as string);
   } catch (error) {}
@@ -36,12 +36,10 @@ export const guildMemberAdd = async (member: GuildMember) => {
 
     const data = await getTodayApod(format(new Date(), 'yyyy-MM-dd'));
 
-    if (data) {
-      if (data.media_type == 'image') embed.setImage(data.url);
+    if (data && data.media_type == 'image') embed.setImage(data.url);
 
-      channel.send({
-        embeds: [embed],
-      });
-    }
+    channel.send({
+      embeds: [embed],
+    });
   }
 };

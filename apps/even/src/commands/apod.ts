@@ -16,13 +16,15 @@ import { format, parse } from 'date-fns';
 
 import { getTodayApod } from '../services/apod';
 
+export type ApodCommand = {
+  value: string;
+  simple?: SimpleCommandMessage;
+  slash?: CommandInteraction;
+};
+
 @Discord()
 export class Apod {
-  async run(
-    value: string,
-    simple?: SimpleCommandMessage,
-    slash?: CommandInteraction
-  ) {
+  async command({ value, simple, slash }: ApodCommand) {
     const getDate = () => new Date(parse(value, 'dd/MM/yyyy', new Date()));
 
     if (value) {
@@ -80,17 +82,17 @@ export class Apod {
       type: ApplicationCommandOptionType.String,
     })
     value: string,
-    interaction: CommandInteraction
+    slash: CommandInteraction
   ) {
-    await this.run(value, undefined, interaction);
+    await this.command({ value, slash });
   }
 
   @SimpleCommand({ description: 'Returns astronomy picture day', name: 'apod' })
   async simpleCommandApod(
     @SimpleCommandOption({ name: 'name', type: SimpleCommandOptionType.String })
     value: string,
-    interaction: SimpleCommandMessage
+    simple: SimpleCommandMessage
   ) {
-    await this.run(value, interaction);
+    await this.command({ value, simple });
   }
 }

@@ -57,7 +57,7 @@ export const Sidebar = ({ open }: SidebarProps) => {
   return (
     <motion.div className={style.base()}>
       <Link href="/app/space">
-        <Image src={spacekrypton} width={60} height={60} alt="Space Krypton" />
+        <Image src={spacekrypton} width={70} height={70} alt="Space Krypton" />
       </Link>
 
       <div className={style.items()}>

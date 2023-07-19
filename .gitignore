@@ -8,11 +8,11 @@ coverage
 .next/
 out/
 dist
+cache/
 build
 
 .DS_Store
 *.pem
-.yarn/
 
 npm-debug.log*
 yarn-debug.log*

@@ -1,16 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+
+import { Loading } from '@/components/loading';
 
 const Index = () => {
   const router = useRouter();
 
-  useEffect(() => {
-    router.push('/app/space');
-  }, []);
+  router.push('/app/space');
 
-  return <></>;
+  return <Loading />
 };
 
 export default Index;
