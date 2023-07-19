@@ -26,9 +26,9 @@ const client = new Client({
 });
 
 client.on('ready', async () => {
-  await client.initApplicationCommands();
-  await client.clearApplicationCommands(EVEN_GUILD_ID);
-  await client.initApplicationCommands();
+  await client.initApplicationCommands({
+    guild: { disable: { add: true, delete: true, update: true } },
+  });
 
   const user = client.user;
 

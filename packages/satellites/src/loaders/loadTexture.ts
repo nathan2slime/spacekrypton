@@ -3,7 +3,9 @@ import * as THREE from 'three';
 const load_texture_as_promise = async (texture: string) => {
   return new Promise((resolve, _reject) => {
     const texture_loader = new THREE.TextureLoader();
-    const textureLoaded = texture_loader.load(`/assets/textures/${texture}.png`);
+    const textureLoaded = texture_loader.load(
+      `/assets/textures/${texture}.png`
+    );
     resolve(textureLoaded);
   }) as Promise<THREE.Texture>;
 };

@@ -9,7 +9,7 @@ const Index = () => {
 
   router.push('/app/space');
 
-  return <Loading />
+  return <Loading />;
 };
 
 export default Index;

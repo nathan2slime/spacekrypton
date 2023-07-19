@@ -3117,6 +3117,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@kry/envs@workspace:packages/envs":
+  version: 0.0.0-use.local
+  resolution: "@kry/envs@workspace:packages/envs"
+  dependencies:
+    "@kry/tsconfig": "*"
+    "@types/node": ^16.18.11
+    "@types/three": ^0.149.0
+    mathjs: ^11.5.1
+    three: ^0.149.0
+    tsup: ^6.7.0
+    typescript: ^4.5.2
+  languageName: unknown
+  linkType: soft
+
 "@kry/even@workspace:apps/even":
   version: 0.0.0-use.local
   resolution: "@kry/even@workspace:apps/even"

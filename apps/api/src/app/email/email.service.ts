@@ -1,3 +1,5 @@
+import { envs } from '@kry/envs';
+
 import { Transporter, createTransport } from 'nodemailer';
 import { Injectable } from '@nestjs/common';
 import { AppI18nLang, i18n } from '@kry/i18n';
@@ -16,8 +18,8 @@ export default class EmailService {
       port: 587,
       secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_SECRET,
+        user: envs.EMAIL_USER,
+        pass: envs.EMAIL_SECRET,
       },
     });
   }
