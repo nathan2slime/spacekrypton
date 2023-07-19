@@ -41,4 +41,5 @@ else
   install_node "$1"
 fi
 
+yarn install
 yarn build
