@@ -25,8 +25,9 @@ const trigger = async (
     success: Colors.Green,
   };
 
-  const channel = data.channels.cache.get(
-    envs.EVEN_LOGGER_CHANNEL
+  const channels = await data.channels.fetch();
+  const channel = channels.find(
+    channel => channel && channel.id == envs.EVEN_LOGGER_CHANNEL
   ) as Interaction['channel'];
 
   if (channel) {
