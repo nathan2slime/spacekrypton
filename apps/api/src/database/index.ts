@@ -1,14 +1,16 @@
+import envs from '@kry/envs';
+
 import { DataSourceOptions } from 'typeorm';
 
 import entities from '../app/models';
 
 export const config = {
-  type: process.env.DATABASE_TYPE,
-  port: process.env.DATABASE_PORT,
-  host: process.env.DATABASE_HOST,
-  username: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
+  type: envs.DATABASE_TYPE,
+  port: envs.DATABASE_PORT,
+  host: envs.DATABASE_HOST,
+  username: envs.DATABASE_USER,
+  password: envs.DATABASE_PASSWORD,
+  database: envs.DATABASE_NAME,
   synchronize: true,
   keepConnectionAlive: true,
   retryAttempts: 2,

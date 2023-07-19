@@ -1,3 +1,4 @@
+import { envs } from '@kry/envs';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { GraphQLErrors } from '@apollo/client/errors';
 import { AppI18nLang } from '@kry/i18n';
@@ -5,7 +6,7 @@ import { DocumentNode, TypedQueryDocumentNode } from 'graphql';
 import { toast } from 'react-hot-toast';
 
 export const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_API_URL,
+  uri: envs.API_URL,
   cache: new InMemoryCache(),
   ssrMode: true,
 });

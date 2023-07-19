@@ -9,6 +9,7 @@ const nextConfig = {
     '@kry/satellites',
     '@kry/i18n',
     '@kry/core',
+    '@kry/envs',
   ],
   i18n: {
     defaultLocale: 'en',

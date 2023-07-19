@@ -15,16 +15,11 @@ import {
 import { format, parse } from 'date-fns';
 
 import { getTodayApod } from '../services/apod';
-
-export type ApodCommand = {
-  value: string;
-  simple?: SimpleCommandMessage;
-  slash?: CommandInteraction;
-};
+import { AppCommand } from './types';
 
 @Discord()
 export class Apod {
-  async command({ value, simple, slash }: ApodCommand) {
+  async command({ value, simple, slash }: AppCommand<string>) {
     const getDate = () => new Date(parse(value, 'dd/MM/yyyy', new Date()));
 
     if (value) {
@@ -33,7 +28,9 @@ export class Apod {
       } catch (error) {
         const reply =
           'Choose dates from June 16, 1995 and in the format 08/03/2003';
-        return slash ? slash.reply(reply) : simple?.message.reply(reply);
+        return slash
+          ? slash.reply(reply)
+          : simple && simple.message.reply(reply);
       }
     }
 
@@ -64,12 +61,13 @@ export class Apod {
         ? slash.reply({
             embeds: [embed],
           })
-        : simple?.message.reply({
+        : simple &&
+          simple.message.reply({
             embeds: [embed],
           });
     } else {
       const reply = "I couldn't find an apod for that day";
-      slash ? slash.reply(reply) : simple?.message.reply(reply);
+      slash ? slash.reply(reply) : simple && simple.message.reply(reply);
     }
   }
 
