@@ -31,7 +31,7 @@ const trigger = async (
   ) as Interaction['channel'];
 
   if (channel) {
-    channel.send({
+    await channel.send({
       embeds: [
         new EmbedBuilder({
           title: 'Even',
