@@ -1,4 +1,4 @@
-import envs from '@kry/envs';
+import { envs } from '@kry/envs';
 
 import { Transporter, createTransport } from 'nodemailer';
 import { Injectable } from '@nestjs/common';

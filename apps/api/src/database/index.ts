@@ -1,5 +1,4 @@
-import envs from '@kry/envs';
-
+import { envs } from '@kry/envs';
 import { DataSourceOptions } from 'typeorm';
 
 import entities from '../app/models';
