@@ -1,12 +1,6 @@
 import { tv } from 'tailwind-variants';
 
 export const styles = tv({
-  variants: {
-    type: {
-      signup: {},
-      signin: {},
-    },
-  },
   slots: {
     logo: 'max-w-[90px] w-full cursor-pointer',
     footerAction: 'mb-2 mt-2 text-sm text-primary-100',

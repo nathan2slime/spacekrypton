@@ -6,7 +6,7 @@ export const CustomLoadModel = async (name: string) =>
     const loader = new GLTFLoader();
 
     loader.load(
-      `assets/${name}.glb`,
+      `/assets/${name}.glb`,
       function (glb) {
         let model = glb.scene as THREE.Group;
         model.traverse(n => {
