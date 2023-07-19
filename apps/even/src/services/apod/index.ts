@@ -3,6 +3,8 @@ import { envs } from '@kry/envs';
 
 import { ApodImage } from './types';
 
+import { event } from '../../index';
+
 export const getTodayApod = async (date: string) => {
   try {
     const { data, status } = await axios.get<ApodImage>(
@@ -14,7 +16,11 @@ export const getTodayApod = async (date: string) => {
     );
 
     if (status == 200) return data;
-  } catch (error) {
+  } catch (err) {
+    event.emit('even', 'error', (err as Error).message, {
+      service: 'apod',
+      date,
+    });
     return;
   }
 };

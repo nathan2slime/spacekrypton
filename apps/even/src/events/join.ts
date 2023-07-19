@@ -5,9 +5,10 @@ import {
   channelMention,
   userMention,
 } from 'discord.js';
+import { format } from 'date-fns';
 
 import { getTodayApod } from '../services/apod';
-import { format } from 'date-fns';
+import { event } from '../index';
 
 export const guildMemberAdd = async (member: GuildMember) => {
   const guild = member.guild;
@@ -15,7 +16,12 @@ export const guildMemberAdd = async (member: GuildMember) => {
 
   try {
     await member.roles.add(process.env.EVEN_MEMBER_ROLE as string);
-  } catch (error) {}
+  } catch (error) {
+    event.emit('even', 'error', (error as Error).message, {
+      event: 'join',
+      member: { name: member.nickname },
+    });
+  }
 
   if (channel) {
     const embed = new EmbedBuilder({
@@ -40,6 +46,11 @@ export const guildMemberAdd = async (member: GuildMember) => {
 
     channel.send({
       embeds: [embed],
+    });
+
+    event.emit('even', 'success', 'New member', {
+      event: 'join',
+      member: { name: member.nickname },
     });
   }
 };

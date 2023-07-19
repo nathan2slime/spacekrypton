@@ -29,6 +29,7 @@
     "@graphql-codegen/typescript-resolvers": "^3.2.1",
     "@storybook/react-webpack5": "^7.0.10",
     "axios": "^1.4.0",
+    "bunyan": "^1.8.15",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "discordx": "^11.7.6",
@@ -38,7 +39,8 @@
     "ts-node": "^10.9.1",
     "tsup": "^6.7.0",
     "turbo": "latest",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "winston": "^3.10.0"
   },
   "engines": {
     "node": ">=18.0.0"

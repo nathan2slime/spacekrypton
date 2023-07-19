@@ -13,6 +13,7 @@
     "@kry/core": "*",
     "@kry/envs": "*",
     "@kry/i18n": "*",
+    "@kry/logger": "*",
     "@kry/satellites": "*",
     "@kry/tsconfig": "*",
     "@kry/types": "*",

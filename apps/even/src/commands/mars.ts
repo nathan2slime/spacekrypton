@@ -47,6 +47,7 @@ export class Mars {
     try {
       if (photos.length > 0) {
         const data = photos[this.randomize(0, photos.length - 1)];
+
         if (data) {
           const embed = new EmbedBuilder({
             title: data.camera.full_name,
@@ -87,8 +88,7 @@ export class Mars {
 
       throw new Error();
     } catch (error) {
-      const reply =
-        'Sorry, not even an image was found, try with other parameters';
+      const reply = 'Sorry, no image was found, try with other parameters';
 
       return slash ? slash.reply(reply) : simple && simple.message.reply(reply);
     }
