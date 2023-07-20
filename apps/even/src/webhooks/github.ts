@@ -5,6 +5,7 @@ import { Colors, EmbedBuilder } from 'discord.js';
 import { envs } from '@kry/envs';
 import axios from 'axios';
 import cors from 'cors';
+import { log } from 'winston';
 
 export const github = (event: EventEmitter) => {
   const app = express();
@@ -19,10 +20,11 @@ export const github = (event: EventEmitter) => {
   });
 
   app.post('/spacekrypton', async (req: Request, res: Response) => {
-    const { commits, head_commit, sender } = req.body;
+    const { commits, ref, head_commit, sender } = req.body;
+    console.log(req.body);
 
     const getEmbedData = () => {
-      if (commits) {
+      if (commits && ref == 'refs/heads/master') {
         return new EmbedBuilder({
           title: 'New commit',
           description: `${commits[0].message}\n\n*Author*: ${
@@ -44,7 +46,6 @@ export const github = (event: EventEmitter) => {
       try {
         await axios.post(envs.EVEN_WEBHOOK_LOGGER, {
           embeds: [embed],
-          content: 'Hello WOrl',
         });
       } catch (error) {
         logger.log('error', (error as Error).message);
