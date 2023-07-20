@@ -20,7 +20,7 @@ export const getHoverMars = async (
     );
 
     if (status == 200) {
-      event.emit('even', 'success', 'Success', {
+      event.emit('even', 'success', 'success', {
         service: 'mars',
         payload,
       });
@@ -30,7 +30,7 @@ export const getHoverMars = async (
 
     throw new Error();
   } catch (err) {
-    event.emit('even', 'error', (err as Error).message, {
+    event.emit('even', 'error', (err as Error).message.toLowerCase(), {
       service: 'mars',
       payload,
     });

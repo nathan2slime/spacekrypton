@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
 import { logger } from '@kry/logger';
 import axios from 'axios';
-import { Interaction, Colors, EmbedBuilder, Guild } from 'discord.js';
+import { Colors, EmbedBuilder } from 'discord.js';
 import { Client } from 'discordx';
 import { envs } from '@kry/envs';
 
