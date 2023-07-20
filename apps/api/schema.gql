@@ -20,9 +20,7 @@ scalar DateTime
 type Mutation {
   AuthSocial(data: SocialSignInInput!): User!
   ConfirmAccount(data: ConfirmAccountInput!): User!
-  SendAccountConfirmationEmail(
-    data: SendAccountConfirmationEmailInput!
-  ): Success!
+  SendAccountConfirmationEmail(data: SendAccountConfirmationEmailInput!): Success!
   SignIn(data: SignInInput!): User!
   SignUp(data: SignUpInput!): User!
 }

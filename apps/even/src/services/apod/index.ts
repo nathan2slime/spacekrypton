@@ -17,7 +17,7 @@ export const getTodayApod = async (date: string) => {
 
     if (status == 200) return data;
   } catch (err) {
-    event.emit('even', 'error', (err as Error).message, {
+    event.emit('even', 'error', (err as Error).message.toLowerCase(), {
       service: 'apod',
       date,
     });
