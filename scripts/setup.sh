@@ -42,4 +42,4 @@ else
 fi
 
 yarn install
-yarn build
+yarn build --filter=@kry/even

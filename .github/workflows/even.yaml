@@ -27,3 +27,5 @@ jobs:
             chmod +x ./scripts/setup.sh
             ./scripts/setup.sh
             service even restart
+            service api.spacekrypton restart
+            service app.spacekrypton restart
