@@ -26,15 +26,17 @@ import UserSecretModule from './user_secret/user_secret.module';
       imports: [UserModule, AuthModule, EmailModule, UserSecretModule],
       useFactory: async (authService: AuthService) => {
         const isDev = envs.NODE_ENV == 'development';
-        
+
         return {
           context: (ctx: ContextPayloadType) =>
             getAuthContext(ctx, authService),
           validate: false,
-          origin: envs.APP_URL,
+          cors: {
+            origin: envs.APP_URL,
+            credentials: true,
+          },
           debug: isDev,
           playground: isDev,
-          credentials: true,
           authChecker: customAuthChecker,
           emitSchemaFile: {
             path: './schema.gql',
