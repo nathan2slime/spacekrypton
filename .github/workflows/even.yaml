@@ -23,7 +23,7 @@ jobs:
           script: |
             cd /root/spacekrypton
             git fetch --all
-            git pull
+            git reset origin/master --hard
             chmod +x ./scripts/setup.sh
             ./scripts/setup.sh
             service even restart
