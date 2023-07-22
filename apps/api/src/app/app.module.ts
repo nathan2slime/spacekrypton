@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ApolloDriver } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeGraphQLModule } from 'typegraphql-nestjs';
+import { envs } from '@kry/envs';
 
 import UserModule from './user/user.module';
 import SeedModule from './seed/seed.module';
@@ -26,6 +27,10 @@ import UserSecretModule from './user_secret/user_secret.module';
       useFactory: async (authService: AuthService) => ({
         context: (ctx: ContextPayloadType) => getAuthContext(ctx, authService),
         validate: false,
+        origin: envs.APP_URL,
+        debug: envs.NODE_ENV == 'development',
+        playground: envs.NODE_ENV == 'development',
+        credentials: true,
         authChecker: customAuthChecker,
         emitSchemaFile: {
           path: './schema.gql',
