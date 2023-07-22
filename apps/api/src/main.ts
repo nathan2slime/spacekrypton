@@ -5,7 +5,7 @@ import 'reflect-metadata';
 
 import { AppModule } from './app/app.module';
 
-async function bootstrap() {
+const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'graphql';
 
@@ -13,6 +13,7 @@ async function bootstrap() {
   app.enableCors({
     origin: envs.APP_URL,
     credentials: true,
+    methods: ['POST'],
   });
   const port = process.env.PORT || 8080;
 
@@ -21,6 +22,6 @@ async function bootstrap() {
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
-}
+};
 
 bootstrap();
