@@ -1,6 +1,5 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { envs } from '@kry/envs';
 import 'reflect-metadata';
 
 import { AppModule } from './app/app.module';
@@ -10,11 +9,7 @@ const bootstrap = async () => {
   const globalPrefix = 'graphql';
 
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors({
-    origin: envs.APP_URL,
-    credentials: true,
-    methods: ['POST'],
-  });
+  app.enableCors();
   const port = process.env.PORT || 8080;
 
   await app.listen(port);
