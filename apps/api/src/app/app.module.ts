@@ -32,7 +32,7 @@ import UserSecretModule from './user_secret/user_secret.module';
             getAuthContext(ctx, authService),
           validate: false,
           cors: {
-            origin: envs.APP_URL,
+            origin: '*',
             credentials: true,
           },
           debug: isDev,
