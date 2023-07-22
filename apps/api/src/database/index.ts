@@ -10,9 +10,12 @@ export const config = {
   username: envs.DATABASE_USER,
   password: envs.DATABASE_PASSWORD,
   database: envs.DATABASE_NAME,
-  synchronize: true,
+  entities,
+  synchronize: envs.NODE_ENV == 'development',
   keepConnectionAlive: true,
   retryAttempts: 2,
   retryDelay: 1000,
-  entities,
+  ssl: {
+    rejectUnauthorized: envs.NODE_ENV == 'production',
+  },
 } as DataSourceOptions;
