@@ -9,7 +9,6 @@ const bootstrap = async () => {
   const globalPrefix = 'graphql';
 
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors();
   const port = process.env.PORT || 8080;
 
   await app.listen(port);

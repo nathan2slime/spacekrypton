@@ -24,19 +24,24 @@ import UserSecretModule from './user_secret/user_secret.module';
       driver: ApolloDriver,
       inject: [AuthService],
       imports: [UserModule, AuthModule, EmailModule, UserSecretModule],
-      useFactory: async (authService: AuthService) => ({
-        context: (ctx: ContextPayloadType) => getAuthContext(ctx, authService),
-        validate: false,
-        origin: envs.APP_URL,
-        debug: envs.NODE_ENV == 'development',
-        playground: envs.NODE_ENV == 'development',
-        credentials: true,
-        authChecker: customAuthChecker,
-        emitSchemaFile: {
-          path: './schema.gql',
-        },
-        authMode: 'error',
-      }),
+      useFactory: async (authService: AuthService) => {
+        const isDev = envs.NODE_ENV == 'development';
+        
+        return {
+          context: (ctx: ContextPayloadType) =>
+            getAuthContext(ctx, authService),
+          validate: false,
+          origin: envs.APP_URL,
+          debug: isDev,
+          playground: isDev,
+          credentials: true,
+          authChecker: customAuthChecker,
+          emitSchemaFile: {
+            path: './schema.gql',
+          },
+          authMode: 'error',
+        };
+      },
     }),
     UserModule,
     SeedModule,
