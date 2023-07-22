@@ -31,7 +31,6 @@ import UserSecretModule from './user_secret/user_secret.module';
           context: (ctx: ContextPayloadType) =>
             getAuthContext(ctx, authService),
           validate: false,
-          origin: envs.APP_URL,
           debug: isDev,
           playground: isDev,
           credentials: false,
