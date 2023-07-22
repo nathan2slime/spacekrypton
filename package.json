@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "dotenv -- turbo run dev --parallel",
     "lint": "dotenv -- turbo run lint",
-    "build": "dotenv -- turbo run build",
+    "build": "turbo run build",
     "test": "dotenv -- turbo run test",
     "seed": "dotenv -- turbo run seed",
     "e2e": "dotenv -- turbo run e2e",
