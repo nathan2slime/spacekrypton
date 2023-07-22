@@ -12,6 +12,7 @@ export const envs = {
   ADMIN_EMAIL: process.env.ADMIN_EMAIL as string,
   ADMIN_PASSWORD: process.env.ADMIN_PASSWORD as string,
   API_URL: process.env.NEXT_PUBLIC_API_URL as string,
+  APP_URL: process.env.NEXT_PUBLIC_APP_URL as string,
   NEXTAUTH_URL: process.env.NEXTAUTH_URL as string,
   DISCORD_AUTHORIZATION: process.env
     .NEXT_PUBLIC_DISCORD_AUTHORIZATION as string,
