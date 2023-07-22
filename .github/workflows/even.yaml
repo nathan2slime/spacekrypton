@@ -22,6 +22,7 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             cd /root/spacekrypton
+            git fetch --all
             git pull
             chmod +x ./scripts/setup.sh
             ./scripts/setup.sh
