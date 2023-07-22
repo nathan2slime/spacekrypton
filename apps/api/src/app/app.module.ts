@@ -31,12 +31,10 @@ import UserSecretModule from './user_secret/user_secret.module';
           context: (ctx: ContextPayloadType) =>
             getAuthContext(ctx, authService),
           validate: false,
-          cors: {
-            origin: '*',
-            credentials: true,
-          },
+          origin: envs.APP_URL,
           debug: isDev,
           playground: isDev,
+          credentials: false,
           authChecker: customAuthChecker,
           emitSchemaFile: {
             path: './schema.gql',
