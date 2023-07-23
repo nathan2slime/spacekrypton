@@ -25,6 +25,13 @@ const RootLayout = ({ children, session }: AppChildren) => {
 
   return (
     <html lang={lang}>
+      <head>
+        <title>Space Krypton</title>
+        <meta
+          name="description"
+          content="Real-time tracking of artificial satellites"
+        />
+      </head>
       <body className={classNames({ [fonts.className]: true, dark: true })}>
         <SessionProvider session={session}>
           <AuthProvider>{children}</AuthProvider>

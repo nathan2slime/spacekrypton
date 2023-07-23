@@ -16,6 +16,7 @@ import AuthService from './auth/auth.service';
 import AuthModule from './auth/auth.module';
 import EmailModule from './email/email.module';
 import UserSecretModule from './user_secret/user_secret.module';
+import SatelliteModule from './satellite/satellite.module';
 
 @Module({
   imports: [
@@ -23,7 +24,13 @@ import UserSecretModule from './user_secret/user_secret.module';
     TypeGraphQLModule.forRootAsync({
       driver: ApolloDriver,
       inject: [AuthService],
-      imports: [UserModule, AuthModule, EmailModule, UserSecretModule],
+      imports: [
+        UserModule,
+        AuthModule,
+        SatelliteModule,
+        EmailModule,
+        UserSecretModule,
+      ],
       useFactory: async (authService: AuthService) => {
         const isDev = envs.NODE_ENV == 'development';
 

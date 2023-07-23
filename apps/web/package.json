@@ -38,6 +38,7 @@
     "classnames": "^2.3.2",
     "graphql": "^16.6.0",
     "next-auth": "^4.22.1",
+    "next-seo": "^6.1.0",
     "react-hook-form": "^7.44.3",
     "react-hot-toast": "^2.4.1",
     "sass": "^1.62.1",

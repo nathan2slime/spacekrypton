@@ -8,6 +8,7 @@ export type AppI18nErr = {
   userNotFound: string;
   emailAlredyExists: string;
   invalidCredentials: string;
+  noSatelliteFound: string;
   sessionExpired: string;
   accountHasAlreadyBeenLinked: string;
   languageNotAvailable: string;
@@ -15,13 +16,14 @@ export type AppI18nErr = {
   invalidSecret: string;
   notAuthorized: string;
   secretExpired: string;
+  unableTrackSatellite: string;
 };
 
 export type AppI18nWeb = {
   fieldIsRequired: string;
   emailHasBeenConfirmed: string;
   email: string;
-  codeHasBeenSent: string,
+  codeHasBeenSent: string;
   password: string;
   resendCode: string;
   continue: string;

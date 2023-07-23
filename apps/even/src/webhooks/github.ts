@@ -21,7 +21,6 @@ export const github = (event: EventEmitter) => {
 
   app.post('/spacekrypton', async (req: Request, res: Response) => {
     const { commits, ref, head_commit, sender } = req.body;
-    console.log(req.body);
 
     const getEmbedData = () => {
       if (commits && ref == 'refs/heads/master') {

@@ -22,7 +22,7 @@ export const styles = tv({
     account:
       'bg-dark-700 rounded-lg p-4 flex items-center gap-4 w-full min-h-[60px]',
     user: 'text-sm text-light-400',
-    avatar: 'w-12 h-12 rounded-full',
+    avatar: 'w-12 h-12 rounded-full object-cover',
     item: 'w-full flex h-10 items-center text-sm gap-3 py-3 px-3 text-light-400 bg-dark-900 border rounded-md border-solid border-dark-900 hover:border-primary-600 transition duration-300',
   },
 });

@@ -29,7 +29,6 @@ export const options: NextAuthOptions = {
         session: { user, ...session },
         token,
       } = args;
-      console.log(args);
 
       if (user && token) {
         const res = await authService.social({
@@ -41,7 +40,6 @@ export const options: NextAuthOptions = {
             type: AuthSocialEnum.Discord,
           },
         });
-        console.log(res);
 
         return {
           ...session,

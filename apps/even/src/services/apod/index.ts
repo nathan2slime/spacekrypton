@@ -21,6 +21,7 @@ export const getTodayApod = async (date: string) => {
       service: 'apod',
       date,
     });
+    
     return;
   }
 };
