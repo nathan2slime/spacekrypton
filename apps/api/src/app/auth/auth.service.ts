@@ -69,9 +69,11 @@ export default class AuthService {
 
   async sendAccountConfirmationEmail(id: number, lang: AppI18nLang) {
     const user = await this.userService.getById(id);
+    const expired = await this.userSecretService.expired(user);
+
     if (!user) throw new Error(i18n[lang].err.userNotFound);
 
-    if (!user.confirmed) {
+    if (!user.confirmed && expired) {
       const userSecret = await this.userSecretService.create(user);
 
       await this.emailService.sendAccountConfirmationEmail(
@@ -123,8 +125,6 @@ export default class AuthService {
     const user = exists
       ? await this.userRepository.save({ ...exists, ...payload })
       : await this.userService.create(payload, lang);
-
-    console.log(user, 'created');
 
     const userSocial = this.userSocialRepository.create({
       user,

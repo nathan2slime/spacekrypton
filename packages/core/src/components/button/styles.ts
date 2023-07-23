@@ -20,8 +20,8 @@ export const styles = tv({
     },
     disabled: {
       true: 'pointer-events-none bg-gray-400 text-gray-700 dark:text-gray-400 dark:bg-dark-700',
+      false: '',
     },
-
     rounded: {
       true: 'w-full max-w-[40px] rounded-full',
     },
@@ -42,5 +42,11 @@ export const styles = tv({
       class:
         'text-secondary-400 border-secondary-400 dark:text-secondary-400 hover:text-secondary-400',
     },
-  ],
+    {
+      variant: 'outline',
+      color: 'primary',
+      disabled: true,
+      class: 'dark:bg-transparent',
+    },
+  ] as object[],
 });

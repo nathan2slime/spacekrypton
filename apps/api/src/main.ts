@@ -11,7 +11,9 @@ const bootstrap = async () => {
   const globalPrefix = 'graphql';
 
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors({ origin: envs.APP_URL });
+  app.enableCors({
+    origin: envs.NODE_ENV == 'production' ? envs.APP_URL : true,
+  });
 
   const port = process.env.PORT || 8080;
 

@@ -19,6 +19,7 @@ import { SidebarProps } from './model';
 import { styles } from './styles';
 
 import spacekrypton from '@/assets/svgs/spacekrypton.svg';
+import dog from '@/assets/images/dog.jpg'
 
 export const Sidebar = ({ open }: SidebarProps) => {
   const { user } = useSnapshot(authProxyState);
@@ -78,7 +79,7 @@ export const Sidebar = ({ open }: SidebarProps) => {
         <div className={style.account()}>
           <img
             className={style.avatar()}
-            src={user.avatar || spacekrypton}
+            src={user.avatar || dog.src}
             alt={user.username}
           />
 

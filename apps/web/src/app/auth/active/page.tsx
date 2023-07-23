@@ -1,9 +1,9 @@
-const Confirmation = () => {
-  return (
-    <div>
-      <h4>Hello</h4>
-    </div>
-  );
+'use client';
+
+import { ActiveForm } from '@/components/forms/active';
+
+const Active = () => {
+  return <ActiveForm isLoading onSubmit={() => {}} />;
 };
 
-export default Confirmation;
+export default Active;

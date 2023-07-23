@@ -1,6 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import { envs } from '@kry/envs';
 import { AuthSocialEnum } from '@kry/types';
 
 import { AuthServices } from '@/services/auth.services';
@@ -9,26 +9,27 @@ const authService = new AuthServices();
 
 export const options: NextAuthOptions = {
   pages: {
-    signIn: '/auth/login',
+    signIn: '/auth/signin',
     signOut: '/',
     error: '/',
     verifyRequest: '/',
     newUser: '/',
   },
-  debug: true,
   providers: [
     DiscordProvider({
-      clientId: process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID as string,
-      authorization: process.env.NEXT_PUBLIC_DISCORD_AUTHORIZATION as string,
-      clientSecret: process.env.NEXT_PUBLIC_DISCORD_SECRECT as string,
+      clientId: envs.DISCORD_CLIENT_ID,
+      authorization: envs.DISCORD_AUTHORIZATION,
+      clientSecret: envs.DISCORD_SECRET,
     }),
   ],
+  secret: envs.NEXTAUTH_SECRET,
   callbacks: {
     session: async args => {
       const {
         session: { user, ...session },
         token,
       } = args;
+      console.log(args);
 
       if (user && token) {
         const res = await authService.social({
@@ -40,6 +41,7 @@ export const options: NextAuthOptions = {
             type: AuthSocialEnum.Discord,
           },
         });
+        console.log(res);
 
         return {
           ...session,

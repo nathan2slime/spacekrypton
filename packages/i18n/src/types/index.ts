@@ -19,10 +19,14 @@ export type AppI18nErr = {
 
 export type AppI18nWeb = {
   fieldIsRequired: string;
+  emailHasBeenConfirmed: string;
   email: string;
+  codeHasBeenSent: string,
   password: string;
+  resendCode: string;
   continue: string;
   forgotMyPassword: string;
+  confirmYourEmail: string;
   notHaveAnAccount: string;
   alreadyHaveAnAccount: string;
   username: string;
