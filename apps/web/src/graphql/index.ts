@@ -11,7 +11,7 @@ export const client = new ApolloClient({
   ssrMode: true,
 });
 
-type Cronos<T> = {
+export type Cronos<T> = {
   query: DocumentNode | TypedQueryDocumentNode;
   variables: T;
   type: 'query' | 'mutation';
@@ -50,8 +50,6 @@ const graphql = async <F, T extends object>({
 
     if (data) return data;
   } catch (error) {
-    console.log(error);
-
     if (notify) toast.error((error as GraphQLErrors[0]).message);
   }
 };

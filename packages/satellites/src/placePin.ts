@@ -41,6 +41,7 @@ export type SatProps = {
 export const place3DPin = ({ coord, radius, sat }: SatProps): SatProps => {
   const sat_r = radius;
   const pos: number[] = getXYZCoordinates(sat_r, coord.lat, coord.long);
+
   sat.position.set(pos[0], pos[1], pos[2]);
   sat.lookAt(new Vector3(0, 0, 0));
 

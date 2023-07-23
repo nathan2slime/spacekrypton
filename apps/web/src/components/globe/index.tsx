@@ -8,7 +8,7 @@ import { AppRef } from '@/types';
 import { SatellitesProps } from './model';
 import { styles } from './styles';
 
-export const Satellites = ({}: SatellitesProps) => {
+export const Globe = ({}: SatellitesProps) => {
   const ref: AppRef<HTMLDivElement> = useRef(null);
   const style = styles();
 
@@ -16,14 +16,14 @@ export const Satellites = ({}: SatellitesProps) => {
     const viewer = new Viewer(ref.current as HTMLElement);
 
     start(viewer, [
-      // {
-      //   coords: [
-      //     {
-      //       lat: 312,
-      //       long: 334,
-      //     },
-      //   ],
-      // },
+      {
+        coords: [
+          {
+            lat: 312,
+            long: 334,
+          },
+        ],
+      },
     ]);
   }, []);
 

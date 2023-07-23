@@ -11,6 +11,8 @@ export const en: AppI18nData = {
     languageNotAvailable: 'Language not available',
     notAuthorized: 'Not authorized',
     secretExpired: 'Secret expired',
+    noSatelliteFound: 'No satellite found',
+    unableTrackSatellite: 'Unable to track satellite',
     invalidSecret: 'Invalid code',
   },
   web: {
@@ -20,10 +22,11 @@ export const en: AppI18nData = {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     resendCode: 'Resend code',
-    emailHasBeenConfirmed: "Your email has been confirmed",
-    codeHasBeenSent: "The code has been sent",
+    emailHasBeenConfirmed: 'Your email has been confirmed',
+    codeHasBeenSent: 'The code has been sent',
     continue: 'Continue',
-    confirmYourEmail: 'Confirm your email. Fill in the code that we sent to the email',
+    confirmYourEmail:
+      'Confirm your email. Fill in the code that we sent to the email',
     forgotMyPassword: 'I forgot my password',
     signInDiscord: 'Discord',
     notHaveAnAccount: "I don't have an account",

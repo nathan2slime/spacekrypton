@@ -17,6 +17,17 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+type Elevation {
+  elevation: Float!
+  latitude: Float!
+  longitude: Float!
+}
+
+input ElevationInput {
+  latitude: Float!
+  longitude: Float!
+}
+
 type Mutation {
   AuthSocial(data: SocialSignInInput!): User!
   ConfirmAccount(data: ConfirmAccountInput!): User!
@@ -43,6 +54,9 @@ enum PermissionEnum {
 
 type Query {
   Auth: User!
+  Elevation(data: ElevationInput!): Elevation!
+  SearchSatellite(data: SatelliteSearchInput!): [Satellite!]!
+  TrackSatellite(data: SatellitePositionInput!): Satellite!
 }
 
 type Role {
@@ -52,6 +66,55 @@ type Role {
   name: String!
   permissions: [Permission!]
   updated_at: DateTime!
+}
+
+type Satellite {
+  id: Float!
+  name: String!
+  positions: [SatellitePosition!]!
+}
+
+enum SatelliteOrder {
+  ASC
+  DESC
+}
+
+type SatellitePosition {
+  altitude: Float!
+  azimuth: Float!
+  dec: Float!
+  eclipsed: Boolean!
+  elevation: Float!
+  latitude: Float!
+  longitude: Float!
+  ra: Float!
+  timestamp: Float!
+}
+
+input SatellitePositionInput {
+  elevation: Float!
+  id: Float!
+  latitude: Float!
+  longitude: Float!
+  seconds: Float! = 1
+}
+
+input SatelliteSearchInput {
+  elevation: Float!
+  latitude: Float!
+  longitude: Float!
+  order: SatelliteOrder!
+  search: String!
+  sort: SatelliteSort!
+}
+
+enum SatelliteSort {
+  ECCENTRICITY
+  ID
+  INCLINATION
+  NAME
+  PERIOD
+  POPULARITY
 }
 
 input SendAccountConfirmationEmailInput {

@@ -26,7 +26,6 @@ export const start = async (
   viewer: Viewer,
   objectCoordinates: ObjectCoordinates[]
 ) => {
-  // Setup
   viewer.camera.position.z = 3.5;
   const background = await loaderTex.load_texture('back');
 
@@ -36,10 +35,7 @@ export const start = async (
 
   viewer.composer.addPass(pass);
 
-  // Satellites
   const sat = await loader.CustomLoadModel('sat');
-
-  // Globe
 
   const u_globe = await loaderShader.create_uniforms();
   let u_globeAtm = await loaderShader.create_uniforms();
@@ -65,6 +61,7 @@ export const start = async (
     SL.frag.PATH,
     u_globe
   );
+
   const globeAtmMat = await loaderShader.compose_material(
     SL.vertex.VERTEX,
     SL.frag.ATM,
@@ -92,7 +89,6 @@ export const start = async (
   );
 
   viewer.composer.addPass(bloom);
-  particles.initParticles(viewer);
 
   sat.scale.set(0.5, 0.5, 0.5);
 

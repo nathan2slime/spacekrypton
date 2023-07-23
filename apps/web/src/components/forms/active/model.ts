@@ -1,6 +1,7 @@
 export type ActiveFormProps = {
-  isLoading: boolean;
-  onSubmit: (code: string) => void;
+  loading: ActionLoading;
+  onConfirm: (data: string[]) => void;
+  onResendCode: () => void;
 };
 
 export type ActionLoading = {

@@ -1,0 +1,43 @@
+query TrackSatellite($data: SatellitePositionInput!) {
+  TrackSatellite(data: $data) {
+    name
+    id
+    positions {
+      latitude
+      longitude
+      altitude 
+      azimuth
+      eclipsed
+      timestamp
+      ra
+      dec
+      elevation
+    }
+  }
+}
+
+query SearchSatellite($data: SatelliteSearchInput!) {
+  SearchSatellite(data:$data) {
+    name
+    id
+    positions {
+      latitude
+      longitude
+      altitude 
+      azimuth
+      eclipsed
+      timestamp
+      ra
+      dec
+      elevation
+    }
+  }
+}
+
+query Elevation($data: ElevationInput!){
+  Elevation(data:$data) {
+    elevation
+    latitude
+    longitude
+  }
+}

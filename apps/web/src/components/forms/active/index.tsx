@@ -8,23 +8,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { i18n } from '@kry/i18n';
 import { useSnapshot } from 'valtio';
-import { toast } from 'react-hot-toast';
-import { useState } from 'react';
 
 import { appProxyState } from '@/store/app.state';
 import { authProxyState } from '@/store/auth.state';
 
-import { ActionLoading, ActiveFormProps } from './model';
+import { ActiveFormProps } from './model';
 import { styles } from './styles';
 
 import spacekrypton from '@/assets/svgs/spacekrypton.svg';
-import { AuthServices } from '@/services/auth.services';
 
-export const ActiveForm = ({}: ActiveFormProps) => {
-  const [loading, setLoading] = useState<ActionLoading>({
-    confirm: false,
-    resend: false,
-  });
+export const ActiveForm = ({
+  loading,
+  onConfirm,
+  onResendCode,
+}: ActiveFormProps) => {
   const { lang } = useSnapshot(appProxyState);
   const { user } = useSnapshot(authProxyState);
 
@@ -48,52 +45,6 @@ export const ActiveForm = ({}: ActiveFormProps) => {
   const form = watch();
 
   const web = i18n[lang].web;
-
-  const onConfirm = async () => {
-    setLoading({ ...loading, confirm: true });
-    const secret = form.data;
-
-    if (user && secret) {
-      const authServices = new AuthServices({
-        lang,
-      });
-
-      const res = await authServices.confirm({
-        data: {
-          secret: secret.join(''),
-          user: parseInt(user.id),
-        },
-      });
-
-      if (res) {
-        const user = res.ConfirmAccount;
-        authProxyState.user = user;
-        toast.success(web.emailHasBeenConfirmed);
-      }
-    }
-
-    setLoading({ ...loading, confirm: false });
-  };
-
-  const onResendCode = async () => {
-    setLoading({ ...loading, resend: true });
-
-    if (user) {
-      const authServices = new AuthServices({
-        lang,
-      });
-
-      const res = await authServices.sendEmailCode({
-        data: {
-          user: parseInt(user.id),
-        },
-      });
-
-      if (res) toast.success(web.codeHasBeenSent);
-    }
-
-    setLoading({ ...loading, resend: false });
-  };
 
   return (
     <div className={style.wrapper()}>
@@ -122,7 +73,10 @@ export const ActiveForm = ({}: ActiveFormProps) => {
       />
 
       <div className={style.footer()}>
-        <KryButton onClick={onConfirm} disabled={!isValid}>
+        <KryButton
+          onClick={() => form.data && onConfirm(form.data)}
+          disabled={!isValid}
+        >
           {loading.confirm ? (
             <RiseLoader size={6} color="white" />
           ) : (
