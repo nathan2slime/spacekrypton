@@ -50,6 +50,8 @@ const graphql = async <F, T extends object>({
 
     if (data) return data;
   } catch (error) {
+    console.log(error);
+
     if (notify) toast.error((error as GraphQLErrors[0]).message);
   }
 };

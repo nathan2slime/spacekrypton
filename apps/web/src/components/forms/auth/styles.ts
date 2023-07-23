@@ -10,8 +10,8 @@ export const styles = tv({
     wrapper:
       'w-full p-9 py-12 flex flex-col h-full bg-dark-100 justify-between max-w-md',
     button: 'mt-4',
+    divider: 'h-[1px] w-full my-6 bg-dark-800',
     fields: 'flex flex-col gap-3',
     link: 'font-bold text-primary-100 hover:text-secondary-100 transition duration-200 cursor-pointer',
-    divider: 'h-[1px] w-full my-6 bg-dark-800',
   },
 });

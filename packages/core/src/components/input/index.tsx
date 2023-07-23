@@ -1,32 +1,39 @@
 import { motion } from 'framer-motion';
+import { FC, forwardRef } from 'react';
 
 import { KryInputProps } from './model';
 import { styles } from './styles';
 
-export const KryInput = ({
-  className,
-  children,
-  kryChange: onChange,
-  label,
-  message,
-  invalid,
-  value,
-  ...props
-}: KryInputProps) => {
-  const style = styles({ className, invalid });
+export const KryInput = forwardRef<HTMLInputElement>(
+  (
+    {
+      className,
+      children,
+      kryChange,
+      label,
+      message,
+      invalid,
+      value,
+      ...props
+    }: KryInputProps,
+    ref
+  ) => {
+    const style = styles({ className, invalid });
 
-  return (
-    <div className={style.container()}>
-      {label && <label className={style.label()}>{label}</label>}
+    return (
+      <div className={style.container()}>
+        {label && <label className={style.label()}>{label}</label>}
 
-      <motion.input
-        {...props}
-        value={value || ''}
-        onChange={e => onChange && onChange(e.target.value)}
-        className={style.base()}
-      />
+        <motion.input
+          {...props}
+          ref={ref}
+          value={value || ''}
+          onChange={e => kryChange && kryChange(e.target.value)}
+          className={style.base({ className })}
+        />
 
-      {invalid && <span className={style.message()}>{message}</span>}
-    </div>
-  );
-};
+        {invalid && <span className={style.message()}>{message}</span>}
+      </div>
+    );
+  }
+) as FC<KryInputProps>;

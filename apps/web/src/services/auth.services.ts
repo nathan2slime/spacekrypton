@@ -8,6 +8,10 @@ import {
   MutationSignInArgs,
   MutationSignUpArgs,
   SignInDocument,
+  MutationConfirmAccountArgs,
+  ConfirmAccountDocument,
+  SendConfirmEmailDocument,
+  MutationSendAccountConfirmationEmailArgs,
 } from '@kry/types';
 import { AppI18nLang } from '@kry/i18n';
 
@@ -43,6 +47,24 @@ export class AuthServices {
       type: 'mutation',
       lang: this.lang,
       variables: payload,
+    });
+  }
+
+  async confirm(payload: MutationConfirmAccountArgs) {
+    return await graphql<Mutation, MutationConfirmAccountArgs>({
+      query: ConfirmAccountDocument,
+      type: 'mutation',
+      variables: payload,
+      lang: this.lang,
+    });
+  }
+
+  async sendEmailCode(payload: MutationSendAccountConfirmationEmailArgs) {
+    return await graphql<Mutation, MutationSendAccountConfirmationEmailArgs>({
+      query: SendConfirmEmailDocument,
+      type: 'mutation',
+      variables: payload,
+      lang: this.lang,
     });
   }
 

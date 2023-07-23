@@ -28,6 +28,18 @@ export default class UserSecretService {
     return userSecret;
   }
 
+  async expired(user: User) {
+    const secret = await this.userSecretRepository.findOne({
+      where: { user: { id: user.id } },
+    });
+
+    if (!secret) return true;
+
+    const isValid = isBefore(new Date(), secret.expiresIn);
+
+    return !isValid;
+  }
+
   async validate(data: ValidateUserSecret, lang: AppI18nLang) {
     const secrets = await this.userSecretRepository.find({
       where: { user: { id: data.user } },
