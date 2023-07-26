@@ -7,7 +7,7 @@ export default defineConfig({
   outDir: 'dist',
   skipNodeModulesBundle: true,
   sourcemap: false,
-  format: ['cjs', 'esm'],
+  format: ['cjs'],
   injectStyle: false,
   minify: true,
   tsconfig: 'tsconfig.json',

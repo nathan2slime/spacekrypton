@@ -34,18 +34,16 @@ export const AuthForm = ({
   const style = styles({ type });
 
   const { lang } = useSnapshot(appProxyState);
+  const web = i18n[lang].web;
 
   const loginSchema = {
-    password: yup.string().required(i18n[lang].web.fieldIsRequired),
-    email: yup
-      .string()
-      .email(i18n[lang].web.invalidEmail)
-      .required(i18n[lang].web.fieldIsRequired),
+    password: yup.string().required(web.fieldIsRequired),
+    email: yup.string().email(web.invalidEmail).required(web.fieldIsRequired),
   };
 
   const signupSchema = {
     ...loginSchema,
-    username: yup.string().min(4, '').required(i18n[lang].web.fieldIsRequired),
+    username: yup.string().min(4, '').required(web.fieldIsRequired),
   };
 
   const schemas = {
@@ -65,7 +63,7 @@ export const AuthForm = ({
 
   const form = watch() as AuthFormType;
 
-  const name = i18n[lang].web[type == 'signin' ? 'signIn' : 'signUp'];
+  const name = web[type == 'signin' ? 'signIn' : 'signUp'];
 
   return (
     <div className={style.wrapper()}>
@@ -88,7 +86,7 @@ export const AuthForm = ({
           <KryInput
             value={form.username}
             kryChange={e => setValue('username', e, { shouldValidate: true })}
-            label={i18n[lang].web.username}
+            label={web.username}
             message={getFieldError(errors, 'username').message}
             invalid={getFieldError(errors, 'username').error}
             type="text"
@@ -100,7 +98,7 @@ export const AuthForm = ({
           kryChange={e => setValue('email', e, { shouldValidate: true })}
           message={getFieldError(errors, 'email').message}
           invalid={getFieldError(errors, 'email').error}
-          label={i18n[lang].web.email}
+          label={web.email}
           type="email"
         />
 
@@ -109,7 +107,7 @@ export const AuthForm = ({
           kryChange={e => setValue('password', e, { shouldValidate: true })}
           message={getFieldError(errors, 'password').message}
           invalid={getFieldError(errors, 'password').error}
-          label={i18n[lang].web.password}
+          label={web.password}
           type="password"
         />
 
@@ -119,11 +117,7 @@ export const AuthForm = ({
             disabled={!isValid}
             onClick={() => onSubmit(form as SignUpInput)}
           >
-            {isLoading ? (
-              <RiseLoader size={6} color="white" />
-            ) : (
-              i18n[lang].web.continue
-            )}
+            {isLoading ? <RiseLoader size={6} color="white" /> : web.continue}
           </KryButton>
 
           <div className={style.divider()} />
@@ -134,29 +128,27 @@ export const AuthForm = ({
               signIn('discord', { redirect: true, callbackUrl: '/' })
             }
           >
-            {i18n[lang].web.signInDiscord}
+            {web.signInDiscord}
           </KryButton>
         </div>
       </div>
 
       <div className={style.footer()}>
         <div className={style.footerAction()}>
-          {type == 'signin'
-            ? i18n[lang].web.notHaveAnAccount
-            : i18n[lang].web.alreadyHaveAnAccount}
+          {type == 'signin' ? web.notHaveAnAccount : web.alreadyHaveAnAccount}
           ,&nbsp;
           <Link
             className={style.link()}
             href={'/auth/' + (type == 'signin' ? 'signup' : 'signin')}
           >
-            {i18n[lang].web[type == 'signup' ? 'signIn' : 'signUp']}
+            {web[type == 'signup' ? 'signIn' : 'signUp']}
           </Link>
         </div>
 
         <div>
           {type == 'signin' && (
             <Link className={style.link()} href="/auth/forgot-password">
-              {i18n[lang].web.forgotMyPassword}
+              {web.forgotMyPassword}
             </Link>
           )}
         </div>

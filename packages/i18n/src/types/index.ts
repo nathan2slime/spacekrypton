@@ -40,7 +40,7 @@ export type AppI18nWeb = {
 };
 
 export type AppEmailI18n = {
-  active: {
+  [key: string]: {
     subject: string;
     texts: string[];
   };

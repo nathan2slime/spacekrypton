@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Viewer, start } from '@kry/satellites';
+import { Viewer, start } from '@kry/globe';
 
 import { AppRef } from '@/types';
 
@@ -15,16 +15,7 @@ export const Globe = ({}: SatellitesProps) => {
   useEffect(() => {
     const viewer = new Viewer(ref.current as HTMLElement);
 
-    start(viewer, [
-      {
-        coords: [
-          {
-            lat: 312,
-            long: 334,
-          },
-        ],
-      },
-    ]);
+    start(viewer);
   }, []);
 
   return (

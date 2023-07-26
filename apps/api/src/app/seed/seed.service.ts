@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { logger } from '@kry/logger';
 
 import { User } from '../models/user.model';
 import { Role } from '../models/role.model';
@@ -49,7 +50,7 @@ export class SeedService {
         })
       );
     } catch (error) {
-      this.logger.error(error);
+      logger.error(error);
       process.exit(1);
     }
   }
@@ -77,11 +78,12 @@ export class SeedService {
       const user = this.userRepository.create(payload);
 
       await this.roleRepository.save(role);
+      logger.log('success', 'application roles created');
       await this.userRepository.save(user);
 
-      this.logger.verbose(payload);
+      logger.verbose(payload);
     } catch (error) {
-      this.logger.error(error);
+      logger.error(error);
       process.exit(1);
     }
   }

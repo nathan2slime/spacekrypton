@@ -36,6 +36,17 @@ export const en: AppI18nData = {
     username: 'Username',
   },
   email: {
+    password: {
+      subject: 'Password Reset - Access to Space Krypton',
+      texts: [
+        'Dear',
+        "We're delighted to have you as part of our community of astronomy enthusiasts at Space Krypton! To continue your cosmic journey, you'll need to reset your password. Click on the link below to begin the password reset process:",
+        '[Password Reset Link]',
+        "Your passion for astronomy inspires us, and we look forward to providing you with a personalized and engaging experience. By resetting your password, you'll gain access to up-to-date scientific articles, captivating images, and exciting discussions with fellow astronomy enthusiasts.",
+        "Thank you for choosing Space Krypton as your platform to connect with the universe. We can't wait to see you explore and learn about the wonders of outer space.",
+        'The Space Krypton Team',
+      ],
+    },
     active: {
       subject: 'Welcome to Space Krypton',
       texts: [

@@ -20,8 +20,8 @@ export const active = ({ secret, username, texts }: ActiveEmailTemplate) => `
     <br />
     <p>${texts[1]}<br /><br /></p>
     <p>${texts[2]}<br /><br /></p>
-    <p style="color: #864fe5">
-      <strong>${texts[4]}</strong>
+    <p>
+      <strong style="color: #864fe5">${texts[4]}</strong>
     </p>
   </div>
 `;

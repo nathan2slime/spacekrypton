@@ -7,12 +7,30 @@ import { AuthSocialEnum } from '../models/enums/auth_social';
 @InputType('SignInInput')
 export class SignInInput {
   @Field(() => String)
-  @MaxLength(15)
+  @MaxLength(30)
   email: string;
 
   @Field(() => String)
   @Length(6, 255)
   password: string;
+}
+
+@ObjectType()
+@InputType()
+export class ChangePasswordInput {
+  @Field(() => String)
+  password: string;
+
+  @Field(() => String)
+  newPassword: string;
+}
+
+@ObjectType()
+@InputType()
+export class RequestPasswordChangeInput {
+  @Field(() => String)
+  @MaxLength(30)
+  email: string;
 }
 
 @ObjectType()

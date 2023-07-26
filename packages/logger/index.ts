@@ -1,6 +1,6 @@
-import { createLogger, format, transports } from 'winston';
+import { LoggerOptions, createLogger, format, transports } from 'winston';
 
-const config = {
+export const config = {
   levels: {
     success: 0,
     alert: 1,
@@ -17,7 +17,7 @@ const config = {
   },
 };
 
-export const logger = createLogger({
+export const options: LoggerOptions = {
   transports: [new transports.Console()],
   levels: config.levels,
   format: format.combine(
@@ -27,4 +27,6 @@ export const logger = createLogger({
     format.splat(),
     format.simple()
   ),
-});
+};
+
+export const logger = createLogger(options);

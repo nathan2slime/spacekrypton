@@ -16,6 +16,7 @@ import { BaseModel } from './base.model';
 import { UserStatusEnum } from './enums/user_status';
 import { UserSocial } from './user_social.model';
 import { UserSecret } from './user_secret.model';
+import { UserToken } from './user_token.model';
 
 @ObjectType()
 @Entity({
@@ -40,9 +41,10 @@ export class User extends BaseModel {
   @Column({ nullable: true, default: false })
   confirmed: boolean;
 
-  @Field(() => String, { nullable: true })
-  @Column({ nullable: true })
-  token: string;
+  @Field(() => [UserToken], { defaultValue: [] })
+  @OneToMany(() => UserToken, token => token.user)
+  @JoinTable()
+  token: UserToken[];
 
   @Field(() => UserStatusEnum, { defaultValue: UserStatusEnum.ACTIVE })
   @Column({

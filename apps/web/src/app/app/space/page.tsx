@@ -2,15 +2,16 @@
 
 import { useSnapshot } from 'valtio';
 import { useEffect, useState } from 'react';
+import { KryModal } from '@kry/core';
+
+import { Globe } from '@/components/globe';
+import { Loading } from '@/components/loading';
 
 import { authProxyState } from '@/store/auth.state';
-import { Globe } from '@/components/globe';
 
 import { SpaceGeolocation } from './model';
 
 import { styles } from './styles';
-import { Loading } from '@/components/loading';
-import { KryModal } from '@kry/core';
 
 const Space = () => {
   const [geolocation, setGeolocation] = useState<SpaceGeolocation>({
@@ -38,11 +39,10 @@ const Space = () => {
 
   return (
     <div className={style.base()}>
-      <Globe />
-
       {geolocation.loading && <Loading blur center={false} screen={false} />}
 
-      <KryModal open kryClose={() => {}}></KryModal>
+      <Globe />
+      <KryModal kryClose={() => {}}></KryModal>
     </div>
   );
 };
