@@ -1,5 +1,0 @@
-{
-  "extends": "@kry/tsconfig/react-library.json",
-  "include": ["src", "index.ts", "tests"],
-  "exclude": ["dist", "build", "node_modules"]
-}

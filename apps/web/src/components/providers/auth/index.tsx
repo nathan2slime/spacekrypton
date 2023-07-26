@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useSnapshot } from 'valtio';
-import { User } from '@kry/types';
+import { User, UserTokenEnum } from '@kry/types';
 import { useRouter } from 'next/navigation';
 
 import { Loading } from '@/components/loading';
@@ -12,7 +12,7 @@ import { authProxyState } from '@/store/auth.state';
 import { AuthServices } from '@/services/auth.services';
 import { appProxyState } from '@/store/app.state';
 
-import { getSavedUser, saveUser } from '@/utils/auth';
+import { getSavedUser, logout, saveUser } from '@/utils/auth';
 import { AppChildren } from '@/types';
 
 const AuthProvider = ({ children }: AppChildren) => {
@@ -34,8 +34,12 @@ const AuthProvider = ({ children }: AppChildren) => {
 
     const user = getSavedUser();
 
-    if (user) {
-      onAuth(user.token as string);
+    const token =
+      user &&
+      user.token.find(({ type }) => type == UserTokenEnum.Authorization);
+
+    if (token) {
+      onAuth(token.secret);
     } else {
       authProxyState.loading = status == 'loading';
     }
@@ -58,6 +62,8 @@ const AuthProvider = ({ children }: AppChildren) => {
     if (data) {
       authProxyState.user = data.Auth;
       saveUser(data.Auth);
+    } else {
+      await logout();
     }
 
     authProxyState.loading = false;

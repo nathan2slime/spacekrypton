@@ -1,13 +1,13 @@
-import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { envs } from '@kry/envs';
+import { logger } from '@kry/logger';
 
 import 'reflect-metadata';
 
 import { AppModule } from './app/app.module';
 
 const bootstrap = async () => {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { logger: false });
   const globalPrefix = 'graphql';
 
   app.setGlobalPrefix(globalPrefix);
@@ -18,8 +18,8 @@ const bootstrap = async () => {
   const port = process.env.PORT || 8080;
 
   await app.listen(port);
-
-  Logger.log(
+  logger.log(
+    'success',
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
 };

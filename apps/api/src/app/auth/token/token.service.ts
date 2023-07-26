@@ -9,9 +9,9 @@ export type TokenData = {
 
 @Injectable()
 export default class TokenService {
-  generate(id: number) {
+  generate(id: number, expiresIn: string | number = '7d') {
     return sign({ id }, TOKEN_HASH, {
-      expiresIn: '7d',
+      expiresIn,
     });
   }
 

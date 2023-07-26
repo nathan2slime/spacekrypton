@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../models/user.model';
 import { UserSocial } from '../models/user_social.model';
 import { UserSecret } from '../models/user_secret.model';
+import { UserToken } from '../models/user_token.model';
 
 import AuthResolver from '../auth/auth.resolver';
 
@@ -14,7 +15,7 @@ import EmailService from '../email/email.service';
 import UserSecretService from '../user_secret/user_secret.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, UserSocial, UserSecret])],
+  imports: [TypeOrmModule.forFeature([User, UserSocial, UserToken, UserSecret])],
   providers: [
     AuthResolver,
     AuthService,

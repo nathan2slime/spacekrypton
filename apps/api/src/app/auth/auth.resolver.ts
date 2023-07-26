@@ -8,6 +8,8 @@ import {
   SignUpInput,
   ConfirmAccountInput,
   SendAccountConfirmationEmailInput,
+  RequestPasswordChangeInput,
+  ChangePasswordInput,
 } from './auth.types';
 import { ContextDataType } from '../../auth/types';
 
@@ -48,6 +50,22 @@ export default class AuthResolver {
     @Arg('data') data: ConfirmAccountInput
   ) {
     return await this.authService.confirmAccount(data, ctx.lang);
+  }
+
+  @Mutation(() => User, { name: 'ChangePassword' })
+  async changePassword(
+    @Ctx() ctx: ContextDataType,
+    @Arg('data') data: ChangePasswordInput
+  ) {
+    return await this.authService.changePassword(data, ctx.token, ctx.lang);
+  }
+
+  @Mutation(() => Success, { name: 'RequestPasswordChange' })
+  async requestPasswordChange(
+    @Ctx() ctx: ContextDataType,
+    @Arg('data') { email }: RequestPasswordChangeInput
+  ) {
+    return await this.authService.requestPasswordChange(email, ctx.lang);
   }
 
   @Mutation(() => Success, { name: 'SendAccountConfirmationEmail' })

@@ -7,6 +7,11 @@ enum AuthSocialEnum {
   DISCORD
 }
 
+input ChangePasswordInput {
+  newPassword: String!
+  password: String!
+}
+
 input ConfirmAccountInput {
   secret: String!
   user: Float!
@@ -30,7 +35,9 @@ input ElevationInput {
 
 type Mutation {
   AuthSocial(data: SocialSignInInput!): User!
+  ChangePassword(data: ChangePasswordInput!): User!
   ConfirmAccount(data: ConfirmAccountInput!): User!
+  RequestPasswordChange(data: RequestPasswordChangeInput!): Success!
   SendAccountConfirmationEmail(data: SendAccountConfirmationEmailInput!): Success!
   SignIn(data: SignInInput!): User!
   SignUp(data: SignUpInput!): User!
@@ -57,6 +64,10 @@ type Query {
   Elevation(data: ElevationInput!): Elevation!
   SearchSatellite(data: SatelliteSearchInput!): [Satellite!]!
   TrackSatellite(data: SatellitePositionInput!): Satellite!
+}
+
+input RequestPasswordChangeInput {
+  email: String!
 }
 
 type Role {
@@ -155,7 +166,7 @@ type User {
   secrets: [UserSecret!]
   social: [UserSocial!]
   status: UserStatusEnum!
-  token: String
+  token: [UserToken!]!
   updated_at: DateTime!
   username: String!
 }
@@ -184,4 +195,19 @@ enum UserStatusEnum {
   ACTIVE
   INACTIVE
   PENDING_PASSWORD
+}
+
+type UserToken {
+  created_at: DateTime!
+  deleted_at: DateTime
+  id: ID!
+  secret: String!
+  type: UserTokenEnum!
+  updated_at: DateTime!
+  user: User!
+}
+
+enum UserTokenEnum {
+  AUTHORIZATION
+  UPDATE_PASSWORD
 }
