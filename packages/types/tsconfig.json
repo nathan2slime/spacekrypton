@@ -1,5 +1,5 @@
 {
-  "extends": "@kry/tsconfig/base.json",
+  "extends": "@nathan3boss/tsconfig/skryp/base.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

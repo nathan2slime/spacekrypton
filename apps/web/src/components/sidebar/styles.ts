@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const styles = tv({
-  base: 'dark:bg-dark-300 flex flex-shrink-0 flex-col items-start justify-between px-3 py-5 bg-light-300 w-full h-screen transition-max-width duration-300',
+  base: 'bg-dark-300 flex flex-shrink-0 flex-col items-start justify-between px-3 py-5 w-full h-screen transition-max-width duration-300',
   variants: {
     open: {
       true: 'max-w-xs',

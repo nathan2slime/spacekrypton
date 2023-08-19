@@ -15,7 +15,7 @@
   "devDependencies": {
     "@kry/envs": "*",
     "@kry/logger": "*",
-    "@kry/tsconfig": "*",
+    "@nathan3boss/tsconfig": "latest",
     "axios": "^1.4.0",
     "canvas": "^2.11.2",
     "discord.js": "^14.11.0",

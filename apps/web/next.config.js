@@ -7,7 +7,6 @@ const nextConfig = {
   transpilePackages: [
     '@kry/types',
     '@kry/i18n',
-    '@kry/core',
     '@kry/globe',
     '@kry/envs',
   ],

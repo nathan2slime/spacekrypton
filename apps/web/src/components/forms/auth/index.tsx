@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
-import { KryButton, KryInput } from '@kry/core';
+import { KryButton, KryInput } from '@skryp/core';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { i18n } from '@kry/i18n';

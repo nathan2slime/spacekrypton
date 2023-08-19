@@ -11,7 +11,7 @@ import {
 } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { useSnapshot } from 'valtio';
-import { KryButton } from '@kry/core';
+import { KryButton } from '@skryp/core';
 
 import { authProxyState } from '@/store/auth.state';
 

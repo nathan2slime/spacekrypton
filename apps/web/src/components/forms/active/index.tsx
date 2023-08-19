@@ -1,9 +1,10 @@
 'use client';
 
 import * as yup from 'yup';
-import { RiseLoader } from 'react-spinners';
 import Image from 'next/image';
-import { KryButton, KryCode } from '@kry/core';
+
+import { RiseLoader } from 'react-spinners';
+import { KryButton, KryCode } from '@skryp/core';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { i18n } from '@kry/i18n';

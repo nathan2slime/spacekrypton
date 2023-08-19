@@ -2,7 +2,7 @@
 
 import { useSnapshot } from 'valtio';
 import { useEffect, useState } from 'react';
-import { KryModal } from '@kry/core';
+import { KryModal } from '@skryp/core';
 
 import { Globe } from '@/components/globe';
 import { Loading } from '@/components/loading';

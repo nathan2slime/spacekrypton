@@ -1,4 +1,4 @@
 {
-  "extends": "@kry/tsconfig/even.json",
+  "extends": "@nathan3boss/tsconfig/skryp/even.json",
   "include": ["src/**.ts", "index.ts"]
 }

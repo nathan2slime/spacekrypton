@@ -1,4 +1,4 @@
 {
-  "extends": "@kry/tsconfig/api.json",
+  "extends": "@nathan3boss/tsconfig/skryp/api.json",
   "compilerOptions": { "outDir": "./dist", "baseUrl": "./" }
 }
