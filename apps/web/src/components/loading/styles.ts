@@ -13,8 +13,8 @@ export const styles = tv({
     },
     screen: {
       true: 'w-screen',
-      false: 'w-full'
-    }
+      false: 'w-full',
+    },
   },
   defaultVariants: {
     blur: 'false',

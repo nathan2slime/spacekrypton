@@ -1,6 +1,6 @@
-import * as THREE from "three";
-import { Viewer } from "./init";
-import Stats from "three/examples/jsm/libs/stats.module";
+import * as THREE from 'three';
+import { Viewer } from './init';
+import Stats from 'three/examples/jsm/libs/stats.module';
 import * as globe from './project/globe';
 
 const clock = new THREE.Clock();
@@ -23,8 +23,8 @@ export function update(_viewer: Viewer) {
 function loop() {
   requestAnimationFrame(loop);
 
-  const dt = clock.getDelta(); 
-  
+  const dt = clock.getDelta();
+
   globe.UpdateGlobe(dt);
 
   viewer.update();

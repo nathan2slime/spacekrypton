@@ -4,12 +4,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  transpilePackages: [
-    '@kry/types',
-    '@kry/i18n',
-    '@kry/globe',
-    '@kry/envs',
-  ],
+  transpilePackages: ['@kry/types', '@kry/i18n', '@kry/globe', '@kry/envs'],
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],

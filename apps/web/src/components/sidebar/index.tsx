@@ -19,7 +19,7 @@ import { SidebarProps } from './model';
 import { styles } from './styles';
 
 import spacekrypton from '@/assets/svgs/spacekrypton.svg';
-import dog from '@/assets/images/dog.jpg'
+import dog from '@/assets/images/dog.jpg';
 
 export const Sidebar = ({ open }: SidebarProps) => {
   const { user } = useSnapshot(authProxyState);

@@ -5,7 +5,7 @@ query TrackSatellite($data: SatellitePositionInput!) {
     positions {
       latitude
       longitude
-      altitude 
+      altitude
       azimuth
       eclipsed
       timestamp
@@ -17,13 +17,13 @@ query TrackSatellite($data: SatellitePositionInput!) {
 }
 
 query SearchSatellite($data: SatelliteSearchInput!) {
-  SearchSatellite(data:$data) {
+  SearchSatellite(data: $data) {
     name
     id
     positions {
       latitude
       longitude
-      altitude 
+      altitude
       azimuth
       eclipsed
       timestamp
@@ -34,8 +34,8 @@ query SearchSatellite($data: SatelliteSearchInput!) {
   }
 }
 
-query Elevation($data: ElevationInput!){
-  Elevation(data:$data) {
+query Elevation($data: ElevationInput!) {
+  Elevation(data: $data) {
     elevation
     latitude
     longitude

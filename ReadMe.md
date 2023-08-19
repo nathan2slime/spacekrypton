@@ -1,11 +1,10 @@
 ### Space Krypton
->  🔭 <p>Real-time tracking of artificial satellites</p>
- 
 
+> 🔭 <p>Real-time tracking of artificial satellites</p>
 
 #### Activity
 
-![Alt](https://repobeats.axiom.co/api/embed/11a173809c97b0f563b06b7d27eabc820f7ed3be.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/11a173809c97b0f563b06b7d27eabc820f7ed3be.svg 'Repobeats analytics image')
 
 #### Contributors
 

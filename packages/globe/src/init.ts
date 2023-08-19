@@ -1,6 +1,6 @@
-import * as THREE from "three";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as THREE from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 export class Viewer {
   renderer: THREE.WebGLRenderer;
@@ -18,14 +18,8 @@ export class Viewer {
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.1;
 
-    this.renderer.setSize(
-      innerWidth,
-      innerHeight,
-    );
-    this.composer.setSize(
-      innerWidth,
-      innerHeight,
-    );
+    this.renderer.setSize(innerWidth, innerHeight);
+    this.composer.setSize(innerWidth, innerHeight);
     // this.renderer.autoClear = false;
 
     this.container.appendChild(this.renderer.domElement);
@@ -44,8 +38,7 @@ export class Viewer {
     this.controls.enableDamping = true;
     this.controls.target.set(0, 0, 0);
     this.controls.autoRotate = true;
-    this.controls.autoRotateSpeed = .5;
-    
+    this.controls.autoRotateSpeed = 0.5;
   }
   update() {
     // this.renderer.render(this.scene, this.camera);

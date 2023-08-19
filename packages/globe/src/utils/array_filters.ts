@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import * as THREE from 'three';
 
 export function get_ground_vertex_positions_array(model: THREE.Mesh | any) {
   const raw_vertex = model.geometry.attributes.position.array as [];
