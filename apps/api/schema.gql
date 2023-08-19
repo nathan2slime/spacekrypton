@@ -38,7 +38,9 @@ type Mutation {
   ChangePassword(data: ChangePasswordInput!): User!
   ConfirmAccount(data: ConfirmAccountInput!): User!
   RequestPasswordChange(data: RequestPasswordChangeInput!): Success!
-  SendAccountConfirmationEmail(data: SendAccountConfirmationEmailInput!): Success!
+  SendAccountConfirmationEmail(
+    data: SendAccountConfirmationEmailInput!
+  ): Success!
   SignIn(data: SignInInput!): User!
   SignUp(data: SignUpInput!): User!
 }

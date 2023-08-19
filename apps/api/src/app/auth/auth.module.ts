@@ -15,7 +15,9 @@ import EmailService from '../email/email.service';
 import UserSecretService from '../user_secret/user_secret.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, UserSocial, UserToken, UserSecret])],
+  imports: [
+    TypeOrmModule.forFeature([User, UserSocial, UserToken, UserSecret]),
+  ],
   providers: [
     AuthResolver,
     AuthService,
