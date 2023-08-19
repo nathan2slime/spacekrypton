@@ -1,4 +1,5 @@
 {
   "extends": "@nathan3boss/tsconfig/skryp/api.json",
-  "compilerOptions": { "outDir": "./dist", "baseUrl": "./" }
+  "compilerOptions": { "outDir": "./dist", "baseUrl": "./" },
+  "include": ["src"]
 }
